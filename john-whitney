@@ -1,0 +1,79 @@
+let trace = [];
+
+function setup() {
+  createCanvas(640, 480);
+}
+
+function draw() {
+  
+  let x = rect
+  let r0 = 15;
+  let g0 = 21;
+  let b0 = 31;
+  
+  let r1 = 101;
+  let g1 = 143;
+  let b1 = 201;
+  
+  let r = map(mouseX, 0, width, r0, r1);
+  let g = map(mouseX, 0, width, g0, g1);
+  let b = map(mouseX, 0, width, b0, b1);
+  
+  background(r,g,b);
+  
+  if (frameCount % 2 == 0){
+    trace.push([mouseX,mouseY]);
+    if (trace.length > 10){
+      trace.shift();
+      trace.shift();
+    }
+  }
+  
+  // print(trace);
+  
+  for (let i = 0; i < trace.length; i++){
+    // print(trace[i]);
+    noFill();
+    stroke(255,255,0);
+    strokeWeight(5);
+    rect(trace[i][0]-50,trace[i][1]-50,180,180);
+  }
+  
+//   if (mouseX < 64){
+//     background(11, 10, 10);
+//   } else if (mouseX >= 64 && mouseX < 128){
+//     background(15, 21, 31);
+//   } else if (mouseX >= 128 && mouseX < 192){
+//     background(24, 36, 51);
+//   } else if (mouseX >= 192 && mouseX < 256){
+//     background(34, 50, 69);
+//   } else if (mouseX >= 256 && mouseX < 320){
+//     background(48, 67, 94);
+//   } else if (mouseX >= 320 && mouseX < 384){
+//     background(61, 93, 130);
+//   } else if (mouseX >= 384 && mouseX < 448){
+//     background(71, 109, 141);
+//   } else if (mouseX >= 448 && mouseX < 512){
+//     background(81, 121, 161);
+//   } else if (mouseX >= 512 && mouseX < 576){
+//     background(91, 133, 181);
+//   } else {
+//     background(101, 143, 201);
+//     stroke(190,190,98);
+//     strokeWeight(2);
+//     noFill();
+    
+//     x(340,0,210,210);
+//     x(338,1,210,210);
+//     x(336,2,210,210);
+//     x(334,3,210,210);
+//     x(332,4,210,210);
+//     x(330,5,210,210);
+//     x(328,6,210,210);
+//     x(326,7,210,210);
+//     x(324,8,210,210);
+//     x(322,9,210,210);
+    
+//   }
+  
+}

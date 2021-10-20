@@ -1,0 +1,123 @@
+let colors = [];
+let rectangles = [];
+
+function setup() {
+  createCanvas(495, 625);
+  background(254, 245, 239);
+  
+  colors.push(color(246, 226, 191));
+  colors.push(color(105, 78, 56));
+  colors.push(color(199, 191, 162));
+  colors.push(color(151, 184, 89));
+  colors.push(color(172, 147, 83));
+  colors.push(color(246, 230, 201));
+  colors.push(color(109, 80, 58));
+  colors.push(color(54, 167, 187));
+  colors.push(color(101, 59, 108));
+  colors.push(color(208, 141, 97));
+  colors.push(color(82, 127, 152));
+  colors.push(color(104, 74, 55));
+  colors.push(color(241, 201, 133));
+  colors.push(color(88, 169, 191));
+  colors.push(color(240, 204, 184));
+  colors.push(color(225, 182, 119));
+  colors.push(color(249, 223, 196));
+  colors.push(color(247, 243, 226));
+  colors.push(color(220, 120, 92));
+  colors.push(color(249, 225, 119));
+  colors.push(color(254, 242, 200));
+  colors.push(color(39, 141, 83));
+  colors.push(color(28, 21, 20));
+  colors.push(color(186, 161, 133));
+  colors.push(color(180, 173, 155));
+  colors.push(color(26, 24, 19));
+  colors.push(color(248, 223, 105));
+  colors.push(color(249, 237, 204));
+  colors.push(color(206, 183, 149));
+  colors.push(color(49, 157, 160));
+  colors.push(color(239, 197, 142));
+  colors.push(color(241, 198, 98));
+  colors.push(color(243, 211, 183));
+  colors.push(color(220, 146, 120));
+  colors.push(color(122, 138, 70));
+  colors.push(color(204, 218, 150));
+  colors.push(color(240, 235, 216));
+
+
+  rectangles.push({ x: 3, y: 12, width: 485, height: 39 });
+  rectangles.push({ x: 3, y: 51, width: 485, height: 19 });
+  rectangles.push({ x: 3, y: 70, width: 485, height: 11 });
+  rectangles.push({ x: 3, y: 81, width: 485, height: 16 });
+  rectangles.push({ x: 3, y: 97, width: 485, height: 15 });
+  rectangles.push({ x: 3, y: 112, width: 485, height: 16 });
+  rectangles.push({ x: 3, y: 128, width: 485, height: 17 });
+  rectangles.push({ x: 3, y: 145, width: 485, height: 11 });
+  rectangles.push({ x: 3, y: 156, width: 485, height: 8 });
+  rectangles.push({ x: 3, y: 164, width: 485, height: 18 });
+  rectangles.push({ x: 3, y: 182, width: 485, height: 20 });
+  rectangles.push({ x: 3, y: 202, width: 485, height: 18 });
+  rectangles.push({ x: 3, y: 220, width: 485, height: 22 });
+  rectangles.push({ x: 3, y: 242, width: 485, height: 15 });
+  rectangles.push({ x: 3, y: 257, width: 485, height: 9 });
+  rectangles.push({ x: 3, y: 266, width: 485, height: 9 });
+  rectangles.push({ x: 3, y: 275, width: 485, height: 16 });
+  rectangles.push({ x: 3, y: 291, width: 485, height: 16 });
+  rectangles.push({ x: 3, y: 307, width: 485, height: 10 });
+  rectangles.push({ x: 3, y: 317, width: 485, height: 11 });
+  rectangles.push({ x: 3, y: 328, width: 485, height: 22 });
+  rectangles.push({ x: 3, y: 350, width: 485, height: 27 });
+  rectangles.push({ x: 3, y: 377, width: 485, height: 21 });
+  rectangles.push({ x: 3, y: 398, width: 485, height: 18 });
+  rectangles.push({ x: 3, y: 416, width: 485, height: 22 });
+  rectangles.push({ x: 3, y: 438, width: 485, height: 25 });
+  rectangles.push({ x: 3, y: 463, width: 485, height: 18 });
+  rectangles.push({ x: 3, y: 481, width: 485, height: 20 });
+  rectangles.push({ x: 3, y: 501, width: 485, height: 24 });
+  rectangles.push({ x: 3, y: 524, width: 485, height: 22 });
+  rectangles.push({ x: 3, y: 546, width: 485, height: 15 });
+  rectangles.push({ x: 3, y: 561, width: 485, height: 13 });
+  rectangles.push({ x: 3, y: 574, width: 485, height: 13 });
+  rectangles.push({ x: 3, y: 587, width: 485, height: 12 });
+  rectangles.push({ x: 3, y: 599, width: 485, height: 12 });
+  rectangles.push({ x: 3, y: 611, width: 485, height: 14 });
+  
+  noLoop();
+  
+}
+
+function draw() {
+  
+  for (let i = 0; i < colors.length - 1; i++) {
+    setGradient(
+      rectangles[i].x,
+      rectangles[i].y,
+      rectangles[i].width,
+      rectangles[i].height,
+      colors[i],
+      colors[i + 1]
+    );
+  }
+  
+  {
+  blendMode(OVERLAY)
+  filter(BLUR, 0.3)
+  noStroke()
+  fill(0, 0, 0, 120)
+  rect(39, 12, 415, 586)
+}
+  
+}
+function setGradient(x, y, w, h, c1, c2) {
+  noFill();
+  for (let i = y; i <= y + h; i++) {
+    let inter = map(i, y, y + h, 0, 1);
+    inter = pow(inter, 3.0);
+    let c = lerpColor(c1, c2, inter);
+    stroke(c);
+    line(x, i, x + w, i);
+  }
+
+  
+  
+}
+

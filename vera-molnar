@@ -1,0 +1,41 @@
+function setup() {
+  createCanvas(1000, 750);
+}
+
+function draw() {
+  background(249, 249, 250);
+  if ((mouseX > 190) & (mouseX < 390) & (mouseY > 100) & (mouseY < 300)) {
+    fill(83, 89, 134, 230);
+  } else {
+    fill(255, 255, 255, 0);
+  }
+  
+  stroke(0);
+  rect(190, 100, 200, 200);
+  
+  fill(255, 255, 255, 0);
+  
+  stroke(0);
+  rect(372, 70, 200, 200);
+  
+  stroke(0);
+  rect(590, 40, 200, 200);
+  
+  stroke(0);
+  rect(173, 293, 200, 200);
+  
+  stroke(0);
+  rect(383, 260, 200, 200);
+  
+  stroke(0);
+  rect(601, 252, 200, 200);
+  
+  stroke(0);
+  rect(177, 475, 200, 200);
+  
+  stroke(0);
+  rect(385, 445, 200, 200);
+  
+  stroke(0);
+  rect(590, 447, 200, 200);
+}
